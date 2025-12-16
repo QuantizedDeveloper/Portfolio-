@@ -3,152 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <title>Quantized Developer | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #f8f9fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+
+    /* ---------- HEADER ---------- */
     header {
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      border-bottom: 1px solid #eee;
     }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
+
+    .nav h1 {
+      font-size: 20px;
       font-weight: 600;
+      margin: 0;
     }
-    nav a {
-      margin-left: 20px;
+
+    .nav a {
+      margin-left: 24px;
       text-decoration: none;
-      color: #333;
+      color: var(--muted);
       font-weight: 400;
     }
+
+    .nav a:hover { color: var(--accent); }
+
+    /* ---------- HERO ---------- */
     .hero {
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: linear-gradient(135deg, #ffffff, #ececec);
-    }
-    .hero h2 {
-      font-size: 48px;
-      margin: 0;
-      font-weight: 600;
-    }
-    .hero p {
-      max-width: 600px;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-    .section {
-      padding: 80px 40px;
       max-width: 1100px;
       margin: auto;
-    }
-    .section h3 {
-      font-size: 32px;
-      margin-bottom: 40px;
+      padding: 120px 24px 100px;
       text-align: center;
     }
-    .projects {
+
+    .hero h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .hero .cta {
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn.outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      margin-left: 12px;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 24px;
+    }
+
+    section h3 {
+      font-size: 32px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 28px;
     }
-    .project-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .project-card:hover {
-      transform: translateY(-8px);
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
-    .project-card img {
+
+    .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
-    .project-card .content {
+
+    .card .content {
       padding: 20px;
     }
-    footer {
+
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
       text-align: center;
-      padding: 40px;
-      background: #f1f1f1;
-      margin-top: 60px;
+    }
+
+    .contact p {
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .btn.outline { margin-left: 0; margin-top: 12px; }
+      .hero .cta { display: flex; flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Fullstack Developer</h1>
+
+<header>
+  <div class="nav">
+    <h1>Quantized Developer</h1>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
-    <h2>Fullstack Developer Portfolio</h2>
-    <p>Welcome to my portfolio. I create visually appealing and functional digital experiences with passion and precision.</p>
-  </section>
+<section class="hero">
+  <h2>Building Clean & Scalable Web Experiences</h2>
+  <p>I’m a full‑stack developer crafting modern, performant applications using React, Django, and clean UI principles.</p>
+  <div class="cta">
+    <a href="#projects" class="btn">View Work</a>
+    <a href="#contact" class="btn outline">Contact Me</a>
+  </div>
+</section>
 
-  <section id="about" class="section">
-    <h3>About Me</h3>
-    <p>Hello! I'm a full-stack developer specializing in React.js, Django, JavaScript, HTML, CSS, Python, and MySQL. I help startups, founders, agencies, and solo devs bring ideas to life from MVPs to complete websites and scalable applications. I typically work between <strong>10 AM to 4 PM</strong>, delivering clean, elegant, and efficient solutions.</p>
-  </section>
+<section id="about" class="about">
+  <h3>About Me</h3>
+  <p>
+    I specialize in building end‑to‑end web applications using React.js, Django, JavaScript, Python, and MySQL.
+    I help founders and solo builders turn ideas into reliable MVPs and polished products with a strong focus on clarity,
+    performance, and maintainability.
+  </p>
+</section>
 
-  <section id="projects" class="section">
-    <h3>Projects</h3>
-    <div class="projects">
-      <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="Project 1">
-        <div class="content">
-          <h4>SmartToDo</h4>
-          <p>A smart and elegant to-do application built with modern web technologies. <a href="https://quantizeddeveloper.github.io/SmartToDo/" target="_blank">View Project</a></p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="Project 2">
-        <div class="content">
-          <h4>Derivative UI</h4>
-          <p>A clean and interactive UI project demonstrating derivative visualizations. <a href="https://quantizeddeveloper.github.io/derivative-ui/" target="_blank">View Project</a></p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/600x400" alt="Project 3">
-        <div class="content">
-          <h4>Tic Tac Toe</h4>
-          <p>A simple and fun tic-tac-toe game built with HTML, CSS, and JavaScript. <a href="https://ran2-coder.github.io/tic-tac-toe-/" target="_blank">Play Game</a></p>
-        </div>
+<section id="projects">
+  <h3>Projects</h3>
+  <div class="projects-grid">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/600x400" alt="SmartToDo" />
+      <div class="content">
+        <h4>SmartToDo</h4>
+        <p>Minimal and smart task management app with a clean UI.</p>
+        <a href="https://quantizeddeveloper.github.io/SmartToDo/" target="_blank">View Project →</a>
       </div>
     </div>
-  </section>
 
-  <section id="contact" class="section">
-    <h3>Contact</h3>
-    <p style="text-align:center; font-size:18px;">Feel free to reach out at <strong>quantizeddeveloper@gmail.com</strong></p>
-  </section>
+    <div class="card">
+      <img src="https://via.placeholder.com/600x400" alt="Derivative UI" />
+      <div class="content">
+        <h4>Derivative UI</h4>
+        <p>Interactive UI experiments focused on visual clarity.</p>
+        <a href="https://quantizeddeveloper.github.io/derivative-ui/" target="_blank">View Project →</a>
+      </div>
+    </div>
 
-  <footer>
-    © 2025 Solo Developer. All rights reserved.
-  </footer>
+    <div class="card">
+      <img src="https://via.placeholder.com/600x400" alt="Tic Tac Toe" />
+      <div class="content">
+        <h4> Rock Paper Scissors</h4>
+        <p>Classic game built with pure HTML, CSS, and JavaScript.</p>
+        <a href="https://ran2-coder10.github.io/Rock-paper-Scissors/" target="_blank">Play Game →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h3>Contact</h3>
+  <p>Let’s build something together.</p>
+  <p><strong>quantizeddeveloper@gmail.com</strong></p>
+</section>
+
+<footer>
+  © 2025 Quantized Developer. All rights reserved.
+</footer>
+
 </body>
 </html>
+
